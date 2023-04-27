@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+
+.ConnectWallet_btn:hover,
+.mint_btn:hover {
+    color: #396fb4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ---------------------------- navbar -------------------------------------- */
+
+.app_name {
+    font-family: 'Staatliches', cursive;
+    color: rgb(192, 212, 255);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* ------------------------------------ home ------------------------------------- */
+.nft_box {
+    background: rgb(201, 195, 243);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* ------------------------------------------ create Nft Box_-------------------- */
+
+.blockchain_selector{
+    background-color:rgba(201, 195, 243, 0.329);
+}
+p.blockchains{
 }
 
-.App-link {
-  color: #61dafb;
+.file_input {
+    background-color: rgb(201, 195, 243);
+    color: #0f0823;
+    cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+label span {
+    color: red;
 }
+
+input {
+    width: 900px;
+    height: 40px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+/* ----------------------------- wallet Box ------------------------------------- */
+.wallet_box {
+    background: rgb(201, 195, 243);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wallets {
+    box-shadow: 0 0 5px 2px rgb(0 0 0 / 0.1);
+    background: #0f0823fc;
+}
+
+.wallet_info h2 {
+    color: #0f0823;
+}
+
+/* .web3_wallet:hover{
+    box-shadow:  0 0 5px 2px rgb(0 0 0 / 0.1);
+} */
