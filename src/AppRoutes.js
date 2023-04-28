@@ -9,7 +9,6 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/mint-nft" element={<CreatNftConstant />} />
-      <Route path="/connect-wallet" element={<WalletBox/>} />
     </Routes>
   );
 }

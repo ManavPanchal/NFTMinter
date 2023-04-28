@@ -18,10 +18,28 @@ export const Blockchain = [
     },
     {
         name:"Polygon",
-        networks:[]
+        networks:[
+            {
+                name:"mainnet",
+                id:137
+            },
+            {
+                name: "mumbai",
+                Id:80001
+            }
+        ]
     },
     {
         name:"Binance",
-        networks:[]
+        networks:[
+            {
+                name:"mainnet",
+                id:56
+            },
+            {
+                name:"BNB testnet",
+                id:97
+            }
+        ]
     }
 ]

@@ -1,26 +1,30 @@
-import { useState } from 'react';
-import { Routes } from 'react-router-dom';
-import './App.css';
-import AppRoutes from './AppRoutes';
-import CreatNftConstant from './CreatNftConstant';
-import NavBar from './NavBar';
+import { createContext, useState } from "react";
+import "./App.css";
+import AppRoutes from "./AppRoutes";
+import NavBar from "./NavBar";
+import WalletBox from "./WalletBox";
+
+export const AppContext = createContext();
 
 function App() {
-  
   const [tokenMetaData, setTokenMetaData] = useState({});
-  const [openWalletBox, setOpenWalletBox] = useState(false)
+  const [openWalletBox, setOpenWalletBox] = useState(false);
+  const [walletConnection, setWalletConnection] = useState(false);
 
-  const popUpWalletBox = ()=>{}
-  
+
+  const popUpWalletBox = () => {
+    return <WalletBox />;
+  };
+
   return (
     <div id="minting_box">
-      <div className="main">
-      <NavBar/>
-      <AppRoutes/>
-      </div>
-      {
-        openWalletBox && popUpWalletBox()
-      }
+      <AppContext.Provider value={{setOpenWalletBox, walletConnection, setWalletConnection}}>
+        <div className="main">
+          <NavBar />
+          <AppRoutes />
+        </div>
+        {openWalletBox && popUpWalletBox()}
+      </AppContext.Provider>
     </div>
   );
 }

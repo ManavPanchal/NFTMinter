@@ -1,21 +1,22 @@
 import { Tooltip } from "@mui/material";
 import React from "react";
 import { useEffect } from "react";
+import { useContext } from "react";
 import { useRef } from "react";
 import { useState } from "react";
+import { AppContext } from "./App";
+import ConfigureDropdown from "./ConfigureDropdown";
 import { infoIcon } from "./images/images";
-import { Blockchain } from "./walletConfigure";
 
 function CreatNftConstant() {
   const [tokenAddress, setTokenAddress] = useState(0x0);
-  const [tokenName, setTokenName] = useState("");
+  const [tokenMetadata, setTokenMetadata] = useState({})
   const [tokenImage, setTokenImage] = useState();
+  const {setOpenWalletBox, walletConnection} = useContext(AppContext)
 
   const fileInputRef = useRef();
 
-  useEffect(() => {
-    console.log(tokenImage);
-  }, [tokenImage]);
+  if(!walletConnection) setOpenWalletBox(true);
 
   return (
     <div className="main flex justify-center items-center h-full">
@@ -23,23 +24,8 @@ function CreatNftConstant() {
         Mint NFT
       </div>
       <div className="mint_box mx-16 p-10 flex flex-col gap-9">
-        <div className="wallet_network_box">
-          <div className="configuration_box">
-            <div className="">
-              <div className="inital_selector w-44 text-center border border-blue-600 p-3 cursor-pointer rounded-lg">--select Blockchain--</div>
-              <div className="blockchain_selector max-w-fit rounded-lg">
-                {Blockchain && Blockchain.map((ele, index) => {
-                  return <p className="blockchains w-44 text-center p-3 cursor-pointer hover:border-blue-600 hover:border hover:rounded-xl" onClick={() => { console.log(ele.name) }}>{ele.name}</p>
-                })}
-              </div>
-            </div>
-
-          </div>
-          {/* <select name="" id="" className="blockchain_selector bg-transparent w-32 text-center rounded-xl p-2">
-            <option value="eth">Ethereum</option>
-            <option value="poly">Polygon</option>
-            <option value="Bin">Binance</option>
-          </select> */}
+        <div className="configuration_box flex items-center justify-between">
+          <ConfigureDropdown/>
         </div>
         <div className="minting_note">
           * Please fill the Input fields and choose image carefully as it is
@@ -51,7 +37,7 @@ function CreatNftConstant() {
             Token Address
             <span>*</span>
             <sub>
-              <Tooltip title="Add" placement="right-end">
+              <Tooltip title=" This refers to the address location of the actual token contract that manages the logic to creat NFT." placement="right-end">
                 {infoIcon()}
               </Tooltip>
             </sub>
@@ -77,10 +63,15 @@ function CreatNftConstant() {
             className="rounded px-3"
             type="text"
             name="tokenName_input"
-            onChange={(event) => setTokenAddress(event.target.value)}
+            onChange={(event) => setTokenMetadata((prevVal)=>{
+              return {
+                ...prevVal,
+                name:event.target.value
+              }
+            })}
           />
         </div>
-        <div className="flex flex-col gap-3 toke_id">
+        <div className="flex flex-col gap-3 token_id">
           <label htmlFor="tokeId_input" className="flex gap-1 text-xl">
             Token Id
             <span>*</span>
@@ -94,10 +85,15 @@ function CreatNftConstant() {
             className="rounded px-3"
             type="number"
             name="tokenId_input"
-            onChange={(event) => setTokenImage(event.target.value)}
+            onChange={(event) => setTokenMetadata((prevVal)=>{
+              return {
+                ...prevVal,
+                id:event.target.value
+              }
+            })}
           />
         </div>
-        <div className="flex flex-col gap-3 token_image">
+        <div className = "flex flex-col gap-3 token_image">
           <label htmlFor="tokenImage_input" className="flex gap-1 text-xl">
             Token Image
             <span>*</span>
@@ -112,7 +108,7 @@ function CreatNftConstant() {
             className="rounded px-3"
             type="file"
             name="tokenImage_input"
-            onChange={(event) => setTokenImage(event.target.files[0].name)}
+            onChange={(event) => setTokenImage(event.target.files)}
             hidden
           />
           <button
@@ -126,6 +122,18 @@ function CreatNftConstant() {
           </button>
           <div className="image_name">{tokenImage && tokenImage}</div>
         </div>
+        <div className="flex flex-col gap-3 extra_metadata">
+          <label htmlFor="tokeId_input" className="flex gap-1 text-xl">
+            data name
+            <span>*</span>
+          </label>
+          <input
+            className="rounded px-3"
+            type="number"
+            name="extraMetadata"
+          />
+        </div>
+        <button className='mint_btn w-full h-14 text-x text-gray-700 font-bold rounded-xl text-center border border-blue-600'>Mint NFT</button>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
-import React from 'react'
-import Web3Modal from "web3modal";
+import React , {useContext, useEffect}from 'react'
+import { AppContext } from './App'
+import Cookies from 'js-cookie';
 import {
   coinbaseWalletImage,
   metamaskWalletImage,
@@ -8,6 +9,8 @@ import {
 } from "./images/images"
 
 function WalletBox() {
+
+  const {setOpenWalletBox, setWalletConnection} = useContext(AppContext)
 
   const wallets = [
     {
@@ -28,8 +31,24 @@ function WalletBox() {
     }
   ]
 
+  const connectWallet = async()=>{
+    if(window.ethereum != "undefined"){
+      try{
+        let accounts = await window.ethereum.request({method:"eth_requestAccounts"})
+        setWalletConnection(true);
+        setOpenWalletBox(false);
+        Cookies.set("MetamaskConnection","true");
+      }catch(err){
+        if(err.message == 'User rejected the request.'){
+          window.alert("User rejected the request to connect wallet")
+        }
+      }
+      
+    }
+  }
+
   return (
-    <div className='w-full h-full absolute'>
+    <div className='w-full h-full absolute top-0 bg-slate-950 bg-opacity-60'>
       <div className="wallet_box bg-white rounded-lg min-w-fit h-fit p-8 flex gap-5 justify-center items-center">
         <div className="wallet_info max-w-2xl w-96 mx-8">
           <h2 className=' text-4xl text-center font-bold'>Connect Wallet</h2>
@@ -38,7 +57,8 @@ function WalletBox() {
         <div className="wallets p-3 py-10 rounded-xl">
           {wallets && wallets.map((ele) => {
             return (
-              <div className="web3_wallet p-8 flex items-center w-96 h-24 rounded-xl justify-start hover:border hover:cursor-pointer hover:border-blue-600">
+              <div className="web3_wallet p-8 flex items-center w-96 h-24 rounded-xl justify-start hover:border hover:cursor-pointer hover:border-blue-600"
+                    onClick={connectWallet}>
                 <div className="wallet_img ">
                   <img src={ele.image} alt="wallet Icon" className=' w-16 h-16 rounded' />
                 </div>
