@@ -10,7 +10,7 @@ function Home() {
           Mint your NFT on the Blockchain for Free!
         </p>
         <p className='breack-word text-lg text-slate-400'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, amet sint officiis, cumque similique eaque modi iusto consectetur voluptas maiores illum suscipit molestiae!</p>
-        <Link to="/mint-nft">
+        <Link to="/nft-listing">
           <button className='mint_btn w-128 h-12 rounded-xl text-center border border-blue-600'>Mint</button>
         </Link>
       </div>
