@@ -1,56 +1,33 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import "./App.css";
 import AppRoutes from "./AppRoutes";
-import NavBar from "./NavBar";
-import WalletBox from "./WalletBox";
+import NavBar from "./components/NavBar";
+import WalletBox from "./components/configuration/WalletBox";
 
 export const AppContext = createContext();
 
 function App() {
-  const [tokenMetaData, setTokenMetaData] = useState({});
   const [openWalletBox, setOpenWalletBox] = useState(false);
   const [walletConnection, setWalletConnection] = useState(false);
-
-
-  const popUpWalletBox = () => {
-    return <WalletBox />;
-  };
+  const [currentConfiguration, setConfigurations] = useState({
+      address:"",
+      chain:"",
+      networkId:""
+  });
 
   return (
     <div id="minting_box">
       <AppContext.Provider
-        value={{ setOpenWalletBox, walletConnection, setWalletConnection }}
+        value={{ setOpenWalletBox, walletConnection, setWalletConnection, currentConfiguration, setConfigurations }}
       >
         <div className="main">
           <NavBar />
           <AppRoutes />
         </div>
-        {openWalletBox && popUpWalletBox()}
+        {openWalletBox && <WalletBox/>}
       </AppContext.Provider>
     </div>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // if(Cookies.get("MetamaskConnection") == "true"){
-    //   setOpenWalletBox(false);
-    //   setWalletConnection(true);
-    // }
-    // if(window) console.log(window.ethereum);
-    // console.log(getWalletData());

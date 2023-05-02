@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { applogo, homeImage } from './images/images'
+import { applogo, homeImage } from '../images/images'
 
 function Home() {
   return (

@@ -28,36 +28,11 @@ input{
     scroll-behavior: smooth;
     scrollbar-width: 0;
 }
+.nftType{
+    background-color: rgba(201, 195, 243, 0.282);
+    color: rgb(201, 195, 243);
+}
 
-/* sliding */
-.slider{
-    display: flex;
-    align-items: center;
-    position: relative;
-    position: relative;
-    overflow: hidden;
-}
-.slide{
-    position: absolute;
-    transition: 1s;
-}
-#pre_btn{
-    position: absolute;
-    z-index: 1;
-    left: 10px;
-    background: transparent;
-    border: none;
-}
-#next_btn{
-    transform: rotate(180deg);
-    position: absolute;
-    right: 10px;
-    background: transparent;
-    border: none;
-}
-#s4:focus{
-    background-color: rgb(85, 85, 136);
-}
 
 /* ------------------------------------------ create Nft Box_-------------------- */
 
