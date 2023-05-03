@@ -1,13 +1,39 @@
 .MetaData h5, .minting_proccess{
     color: rgba(201, 195, 243, 0.583);
 }
- .instance_metadata{
+.instance_metadata{
     color: rgb(201, 195, 243);
 }
 .nft_receiver_address input{
     background-color: rgba(201, 195, 243, 0.583);
     color: #0f0823;
 }
+
+/* ------------------------------ listing-page ----------------------------- */
+.nft_listing{
+    display: flex;
+}
+.categories{
+    cursor: pointer;
+    background-color: rgba(201, 195, 243, 0.144);
+    color: rgb(201, 195, 243);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*.instance_metadata h3{
     border-bottom: 1px solid #0f0823;
 }

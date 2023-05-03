@@ -4,6 +4,13 @@ import coinbaseWalletImage from "./coinBaseimag.webp"
 import metamaskWalletImage from "./metamaskIcon.webp"
 import exodusWalletImage from "./exodusWalletImage.jpg"
 import trustWalletImage from "./trustwalletImage.webp"
+import artsIcon from "./artsIcon.png"
+import collectibleIcon from "./collectibleIcon.png"
+import sportIcon from "./sportIcon.png"
+import sportIcon2 from "./sportIcon2.png"
+import musicIcon from "./musicIcon.png"
+import animeIcon from "./animeIcon.png"
+import swordIcon from "./sword.png"
 
 const infoIcon = ()=>{
     return(
@@ -18,5 +25,12 @@ export {
     metamaskWalletImage, 
     exodusWalletImage, 
     trustWalletImage,
+    artsIcon,
+    collectibleIcon,
+    sportIcon,
+    sportIcon2,
+    musicIcon,
+    animeIcon,
+    swordIcon,
     infoIcon
 }

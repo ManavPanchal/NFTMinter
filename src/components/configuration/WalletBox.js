@@ -6,7 +6,7 @@ import {
   metamaskWalletImage,
   exodusWalletImage,
   trustWalletImage,
-} from "../../images/images";
+} from "../../Data/images/images";
 
 
 function WalletBox() {

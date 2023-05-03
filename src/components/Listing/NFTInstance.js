@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../../App";
 import { NFTData } from "../../Data/NFTData";
+import { MintNft } from "../configuration/mintNft";
 
 function NFTInstance() {
     const { id } = useParams();
@@ -20,6 +21,7 @@ function NFTInstance() {
         if(document.getElementsByClassName("address_input")[0].value === ""){
             window.alert("please add receiver address"); return;
         }
+        await MintNft(document.getElementsByClassName("address_input")[0].value, walletConnection, setOpenWalletBox);
         console.log("minted successfully");
     }
 

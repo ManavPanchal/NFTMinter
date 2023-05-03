@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AppContext } from "../App";
-import { applogo } from "../images/images";
+import { applogo } from "../Data/images/images";
 
 
 function NavBar() {

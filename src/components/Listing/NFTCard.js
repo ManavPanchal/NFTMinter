@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function NFTCard({ id, name, image, description, type }) {
   return (
     <Link to={`/nft-instance/${id}`}>
-      <div className="nft_box min-w-fit h-fit relative rounded-lg shadow-lg text-black text-xs flex flex-col gap-3 pb-4">
+      <div className="nft_box w-80 h-fit relative rounded-lg shadow-lg text-black text-xs flex flex-col gap-3 pb-4">
         <div className="nft_img rounded-lg">
           <img
             src={image}

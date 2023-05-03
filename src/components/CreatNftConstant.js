@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { AppContext } from "../App";
 import ConfigureDropdown from "./configuration/ConfigureDropdown";
-import { infoIcon } from "../images/images";
+import { infoIcon } from "../Data/images/images";
 
 function CreatNftConstant() {
   const [tokenAddress, setTokenAddress] = useState(0x0);
