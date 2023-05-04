@@ -7,31 +7,7 @@ import { applogo } from "../Data/images/images";
 
 function NavBar() {
 
-  const {setOpenWalletBox, setWalletConnection, currentConfiguration, setConfigurations} = useContext(AppContext);
-
-  const connectWallet = async () => {
-    if (window.ethereum !== "undefined") {
-      try {
-        let accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        window.ethereum.on("accountsChanged", () => {
-          console.log("changed");
-            setConfigurations( (prevdata)=> {
-              return {...prevdata, address:window.ethereum.selectedAddress}
-            })
-        });
-        setWalletConnection(true);
-        setConfigurations((prevdata) => { return {...prevdata, address: accounts[0] };});
-        setOpenWalletBox(false);
-        Cookies.set("MetamaskConnection", "true");
-      } catch (err) {
-        if (err.message === "User rejected the request.") {
-          window.alert("User rejected the request to connect wallet");
-        }
-      }
-    }
-  };
+  const {setOpenWalletBox, currentConfiguration, walletConnection} = useContext(AppContext);
 
   return (
     <div className="navbar flex justify-between p-8 px-14">
@@ -48,7 +24,9 @@ function NavBar() {
       <div className="wallet_connector">
         <button
           className="ConnectWallet_btn rounded-xl w-60 h-12 text-center text-gray-700 border border-blue-600 "
-          onClick={connectWallet}
+          onClick={()=>
+            (walletConnection) ? null : setOpenWalletBox(true)
+          }
         >
           { currentConfiguration && function(){
                 if(currentConfiguration.address !== ""){

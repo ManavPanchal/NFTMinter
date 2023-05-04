@@ -22,16 +22,6 @@ input{
     background: rgb(201, 195, 243);
 }
 
-/* ------------------------------------ NFT listing ------------------------------- */
-
-.nft_listing{
-    scroll-behavior: smooth;
-    scrollbar-width: 0;
-}
-.nftType{
-    background-color: rgba(201, 195, 243, 0.282);
-    color: rgb(201, 195, 243);
-}
 
 
 /* ------------------------------------------ create Nft Box_-------------------- */

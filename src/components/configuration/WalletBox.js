@@ -64,7 +64,7 @@ function WalletBox() {
               setConfigurations((prevdata)=>{
                 return {...prevdata, netWorkId:chainId}
               })
-          })
+          });
 
         Cookies.set("MetamaskConnection", "true");
       } catch (err) {

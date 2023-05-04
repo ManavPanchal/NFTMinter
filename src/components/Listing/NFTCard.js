@@ -9,15 +9,15 @@ function NFTCard({ id, name, image, description, type }) {
           <img
             src={image}
             alt="nftImage"
-            className="rounded-lg w-80 border-blue-600"
+            className="rounded-lg w-80 h-80 border-blue-600"
           />
         </div>
         <div className="nft_metadata px-3">
           <p className="nft_name text-base font-bold">{name}</p>
-          <p>{description}</p>
+          <p className="h-9 overflow-hidden">{description}</p>
         </div>
         <div className="nftType absolute top-2 left-2 p-2 px-8 rounded-2xl text-base ">
-          <p>{type}</p>
+          <p className="text-blue-900">{type}</p>
         </div>
       </div>
     </Link>

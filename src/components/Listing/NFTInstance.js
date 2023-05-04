@@ -13,6 +13,36 @@ function NFTInstance() {
         document.getElementsByClassName("address_input")[0].value = currentConfiguration.address;
     },[currentConfiguration])
 
+    const requestToChangeChain = async()=>{
+        if (window.ethereum) {
+            try {
+              await window.ethereum.request({
+                method: 'wallet_switchEthereumChain',
+                params: [{ chainId: "0x13881" }]
+              });
+            } catch (error) {
+              if (error.code === 4902) {
+                try {
+                  await window.ethereum.request({
+                    method: 'wallet_addEthereumChain',
+                    params: [
+                      {
+                        chainId: "0x13881",
+                        rpcUrl: 'https://polygon-mumbai.infura.io/v3/4458cf4d1689497b9a38b1d6bbf05e78',
+                      },
+                    ],
+                  });
+                } catch (addError) {
+                  console.error(addError);
+                }
+              }
+              console.error(error);
+            }
+          } else {
+            alert('MetaMask is not installed. Please consider installing it: https://metamask.io/download.html');
+          } 
+    }
+
     const middleware = async()=>{
         if(!walletConnection){
             setOpenWalletBox(true);
@@ -21,14 +51,15 @@ function NFTInstance() {
         if(document.getElementsByClassName("address_input")[0].value === ""){
             window.alert("please add receiver address"); return;
         }
-        await MintNft(document.getElementsByClassName("address_input")[0].value, walletConnection, setOpenWalletBox);
+        await requestToChangeChain()
+        await MintNft(document.getElementsByClassName("address_input")[0].value, Nft.ipfs, walletConnection, setOpenWalletBox);
         console.log("minted successfully");
     }
 
     return (
         <div className="nftInstance my-12 flex m-4 justify-center gap-14 items-center p-4">
             <div className="NFTImage">
-                <img src={Nft.image} alt="NFT" className="h-128 rounded-sm" />
+                <img src={Nft.image} alt="NFT" className="h-128 rounded-lg" />
             </div>
             <div className="nft_instance_info h-full flex flex-col justify-evenly gap-6">
                 <div className="instance_metadata rounded-lg flex flex-col gap-3">
@@ -42,7 +73,7 @@ function NFTInstance() {
                     </div>
                     <div className="flex justify-between px-1 text-sm mt-5">
                         <p>Minting Cost</p>
-                        <p className="mintingCost">0.005 ether</p>
+                        <p className="mintingCost">0.05 ether</p>
                     </div>
                     <button
                         type="submit"
