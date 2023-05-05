@@ -7,7 +7,7 @@ import { applogo } from "../Data/images/images";
 
 function NavBar() {
 
-  const {setOpenWalletBox, currentConfiguration, walletConnection} = useContext(AppContext);
+  const {setOpenWalletBox, currentConfiguration, walletConnection, setWalletConnection} = useContext(AppContext);
 
   return (
     <div className="navbar flex justify-between p-8 px-14">
@@ -30,11 +30,18 @@ function NavBar() {
         >
           { currentConfiguration && function(){
                 if(currentConfiguration.address !== ""){
-                  let address = currentConfiguration.address
-                  address = `${address.substring(0,4)}...${address.substring(address.length-4)}`
-                  return address
+                  try {
+                    let address = currentConfiguration.address
+                    address = `${address.substring(0,4)}...${address.substring(address.length-4)}`
+                    return address
+                  } catch (error) {
+                    console.log(true);
+                    localStorage.setItem("metamaskConnection","false")
+                    setWalletConnection(false)
+                    console.log(error);
+                  }
                 }
-                else return "Connect Wallet"
+                return "Connect Wallet"
           }()}
         </button>
       </div>

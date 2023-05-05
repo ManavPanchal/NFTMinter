@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { applogo, homeImage } from "../Data/images/images";
+import MsgHandler from "./configuration/MsgHandler";
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
           empowers you to showcase your work and engage with your fans like
           never before. Join the NFT revolution and start minting your own
           tokens now.
+          {/* "Create and Sell Your Own Customizable NFTs with Just a Few Clicks Using Our User-Friendly Platform. Get Started Now!" */}
         </p>
         <Link to="/nft-listing">
           <button className="mint_btn w-128 h-12 rounded-xl text-center border border-blue-600">

@@ -108,7 +108,7 @@ function NFTListing() {
         </div>
         <div className="nft_listing gap-7  overflow-x-scroll scrollbar-hide">
           {NFTData &&
-            NFTData.filter(ele=>ele.type === "Sport").map((ele, index) => {
+            NFTData.filter(ele=>ele.type === "Sports").map((ele, index) => {
               return (
                 <NFTCard
                   key={index}
@@ -132,7 +132,7 @@ function NFTListing() {
               return (
                 <NFTCard
                   key={index}
-                  id={index}
+                  id={ele.id}
                   name={ele.name}
                   image={ele.image}
                   description={ele.description}
@@ -142,17 +142,17 @@ function NFTListing() {
             })}
         </div>
       </div>
-      <div id="swordsnft_box" className="px-7">
+      <div id="carsnft_box" className="px-7">
         <div className="category_name gradient-text text-4xl font-bold my-6">
-          Swords
+          Cars
         </div>
         <div className="nft_listing gap-7  overflow-x-scroll scrollbar-hide">
           {NFTData &&
-            NFTData.map((ele, index) => {
+            NFTData.filter(ele => ele.type === "Cars").map((ele, index) => {
               return (
                 <NFTCard
                   key={index}
-                  id={index}
+                  id={ele.id}
                   name={ele.name}
                   image={ele.image}
                   description={ele.description}

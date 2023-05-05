@@ -59,8 +59,8 @@
     background-image: linear-gradient(133deg, rgba(150, 155, 156, 1) 0%, rgba(251, 251, 251, 1) 34%, rgba(255, 255, 255, 1) 100%);
 }
 
-#swordsnft_box .gradient-text {
-    background-image: linear-gradient(133deg, rgba(255, 159, 2, 1) 0%, rgba(186, 116, 1, 1) 31%, rgba(108, 78, 13, 1) 57%, rgba(61, 55, 20, 1) 100%);
+#carsnft_box .gradient-text {
+    background-image: linear-gradient(133deg, rgba(186,1,1,1) 0%, rgba(61,39,20,1) 61%);
 }
 
 /* ------------------------------------ nft_instance -------------------------- */

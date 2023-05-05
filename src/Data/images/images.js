@@ -10,7 +10,7 @@ import sportIcon from "./sportIcon.png"
 import sportIcon2 from "./sportIcon2.png"
 import musicIcon from "./musicIcon.png"
 import animeIcon from "./animeIcon.png"
-import swordIcon from "./sword.png"
+import carIcon from "./sport-car (1).png"
 
 const infoIcon = ()=>{
     return(
@@ -31,6 +31,6 @@ export {
     sportIcon2,
     musicIcon,
     animeIcon,
-    swordIcon,
+    carIcon,
     infoIcon
 }

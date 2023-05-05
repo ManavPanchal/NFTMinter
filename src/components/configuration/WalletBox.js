@@ -37,6 +37,7 @@ function WalletBox() {
 
   const setStates = (accounts) => {
     setWalletConnection(true);
+    localStorage.setItem("metamaskConnection","true")
     setConfigurations((prevdata) => {
       return {
         ...prevdata,
@@ -53,18 +54,6 @@ function WalletBox() {
           method: "eth_requestAccounts",
         });
         setStates(accounts);
-
-        window.ethereum.on("accountsChanged", (accounts) => {
-            setConfigurations( (prevdata)=> {
-              return {...prevdata, address:accounts[0]}
-            })
-        });
-
-        window.ethereum.on("chainChanged", (chainId) => {
-              setConfigurations((prevdata)=>{
-                return {...prevdata, netWorkId:chainId}
-              })
-          });
 
         Cookies.set("MetamaskConnection", "true");
       } catch (err) {
