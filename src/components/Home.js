@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { applogo, homeImage } from "../Data/images/images";
-import MsgHandler from "./configuration/MsgHandler";
 
 function Home() {
   return (

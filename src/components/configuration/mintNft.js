@@ -11,7 +11,7 @@ export const MintNft = async (to, ipfsUri, walletConnection, setOpenWalletBox) =
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = await provider.getSigner();
         const contractInastance = new ethers.Contract(address, Abi, signer);
-        const tx = await contractInastance.mintNft(to, ipfsUri, "0xf32D14b896935Ec05F08A27B16495DF367f0eEC5", { value: ethers.utils.parseEther("0.05") });
+        const tx = await contractInastance.mintNft(to, ipfsUri, "0x46efD46188Ba03C515dcC84aBd935Ba34008c10C", { value: ethers.utils.parseEther("0.05") });
         await tx.wait();
     }
 }

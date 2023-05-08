@@ -4,15 +4,15 @@ export const Blockchain = [
         networks:[
             {
                 name:"mainnet",
-                id:1
+                id:"0x1"
             },
             {
                 name:"goerli",
-                Id:5
+                id:"0x5"
             },
             {
                 name:"Sepolia",
-                Id:11155111
+                id:"0xaa36a7"
             }
         ]
     },
@@ -21,11 +21,11 @@ export const Blockchain = [
         networks:[
             {
                 name:"mainnet",
-                id:137
+                id:"0x89"
             },
             {
                 name: "mumbai",
-                Id:80001
+                id:"0x13881"
             }
         ]
     },
@@ -34,11 +34,11 @@ export const Blockchain = [
         networks:[
             {
                 name:"mainnet",
-                id:56
+                id:"0x38"
             },
             {
                 name:"BNB testnet",
-                id:97
+                id:"0x61"
             }
         ]
     }

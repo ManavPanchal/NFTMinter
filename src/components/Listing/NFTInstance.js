@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AppContext } from "../../App";
 import { NFTData } from "../../Data/NFTData";
+import ConfigureDropdown from "../configuration/ConfigureDropdown";
 import { MintNft } from "../configuration/mintNft";
 
 function NFTInstance() {
@@ -87,11 +88,13 @@ function NFTInstance() {
 
   return (
     <div className="nftInstance my-12 flex m-4 justify-center gap-14 items-center p-4">
-      
       <div className="NFTImage">
         <img src={Nft.image} alt="NFT" className="h-128 rounded-lg" />
       </div>
       <div className="nft_instance_info h-full flex flex-col justify-evenly gap-6">
+        {walletConnection && <div className="configuration_box flex items-center justify-between">
+          <ConfigureDropdown />
+        </div>}
         <div className="instance_metadata rounded-lg flex flex-col gap-3">
           <h3 className="text-4xl font-bold relative">{Nft.name} {/* <span className="absolute text-xs">*name</span> */}</h3>
           <h5 className="text-2xl">{Nft.description}  {/*<span className="absolute text-xs">*description</span>*/}</h5>

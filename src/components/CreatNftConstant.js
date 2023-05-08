@@ -1,6 +1,5 @@
 import { Tooltip } from "@mui/material";
 import React from "react";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { useRef } from "react";
 import { useState } from "react";
@@ -10,7 +9,7 @@ import { infoIcon } from "../Data/images/images";
 
 function CreatNftConstant() {
   const [tokenAddress, setTokenAddress] = useState(0x0);
-  const [tokenMetadata, setTokenMetadata] = useState({})
+  const [tokenMetadata, setTokenMetadata] = useState({});
   const [tokenImage, setTokenImage] = useState();
   const {setOpenWalletBox, walletConnection} = useContext(AppContext)
 

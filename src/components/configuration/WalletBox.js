@@ -1,6 +1,5 @@
 import React, {useContext } from "react";
 import { AppContext } from "../../App";
-import Cookies from "js-cookie";
 import {
   coinbaseWalletImage,
   metamaskWalletImage,
@@ -55,7 +54,6 @@ function WalletBox() {
         });
         setStates(accounts);
 
-        Cookies.set("MetamaskConnection", "true");
       } catch (err) {
         if (err.message === "User rejected the request.") {
           window.alert("User rejected the request to connect wallet");
