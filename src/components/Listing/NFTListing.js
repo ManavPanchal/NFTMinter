@@ -4,7 +4,6 @@ import NFTCard from "./NFTCard";
 import "./Listing.css";
 
 function NFTListing() {
-  //0x38eC372182812091ca1E270f02bcA995707D0B21
 
   return (
     <div className="listing_box m-9 flex flex-col gap-16">

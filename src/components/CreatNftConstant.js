@@ -1,3 +1,5 @@
+// this page is currently in use of our web flow but will be useful in future
+
 import { Tooltip } from "@mui/material";
 import React from "react";
 import { useContext } from "react";

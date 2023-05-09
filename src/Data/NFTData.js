@@ -1,4 +1,3 @@
-import { homeImage } from "./images/images";
 import {
   animeIcon,
   artsIcon,

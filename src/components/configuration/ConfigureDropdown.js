@@ -16,22 +16,22 @@ function ConfigureDropdown() {
                     params: [{ chainId: chainId }]
                 });
             } catch (error) {
-                // if (error.code === 4902) {
-                //     try {
-                //         await window.ethereum.request({
-                //             method: 'wallet_addEthereumChain',
-                //             params: [
-                //                 {
-                //                     chainId: chainId,
-                //                     rpcUrl: 'https://polygon-mumbai.infura.io/v3/4458cf4d1689497b9a38b1d6bbf05e78',
-                //                 },
-                //             ],
-                //         });
-                //     } catch (addError) {
-                //         console.error(addError);
-                //     }
-                // }
-                // console.error(error);
+                if (error.code === 4902) {
+                    try {
+                        await window.ethereum.request({
+                            method: 'wallet_addEthereumChain',
+                            params: [
+                                {
+                                    chainId: chainId,
+                                    rpcUrl: 'https://polygon-mumbai.infura.io/v3/4458cf4d1689497b9a38b1d6bbf05e78',
+                                },
+                            ],
+                        });
+                    } catch (addError) {
+                        console.error(addError);
+                    }
+                }
+                console.error(error);
             }
         } else {
             alert('MetaMask is not installed. Please consider installing it: https://metamask.io/download.html');
@@ -41,7 +41,7 @@ function ConfigureDropdown() {
     useEffect(() => {
         let chainId;
         Blockchain.forEach((ele) => {
-            if(ele.name == currentBlockchain){
+            if(ele.name === currentBlockchain){
                 ele.networks.forEach((ele) => { 
                     if (ele.name === currentNetwork)chainId = ele.id;
                 })
@@ -83,14 +83,13 @@ function ConfigureDropdown() {
                         try{
                             if (ele.id === currentConfiguration.networkId)
                             document.getElementById("networkSelector").selectedIndex = index + 1
-                        return (
-                            <option value={ele.name} className="text-black text-center rounded">
-                                {ele.name}
-                            </option>
-                        )
+                            return (
+                                <option value={ele.name} className="text-black text-center rounded">
+                                    {ele.name}
+                                </option>
+                            )
                         }catch(err){};
-                    })
-                    }
+                    })}
                 </select>
             </>
         )

@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import CreatNftConstant from "./components/CreatNftConstant";
 import Home from "./components/Home";

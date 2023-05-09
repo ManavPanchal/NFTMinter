@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AppContext } from "../App";
@@ -14,7 +13,7 @@ function NavBar() {
       <div className="home_navigator flex gap-4 items-center">
         <div className="app_logo">
           <NavLink to={"/"}>
-            <img src={applogo} alt="AL" className=" w-10 h-10 rounded" />
+            <img src={applogo} alt="AL" className="w-10 h-10 rounded" />
           </NavLink>
         </div>
         <div className="app_name text-4xl text-center font-extrabold">

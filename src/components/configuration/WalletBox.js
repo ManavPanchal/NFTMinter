@@ -1,11 +1,6 @@
-import React, {useContext } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../../App";
-import {
-  coinbaseWalletImage,
-  metamaskWalletImage,
-  exodusWalletImage,
-  trustWalletImage,
-} from "../../Data/images/images";
+import { wallets } from "./walletConfigure";
 
 
 function WalletBox() {
@@ -14,29 +9,10 @@ function WalletBox() {
     setWalletConnection,
     setConfigurations,
   } = useContext(AppContext);
-
-  const wallets = [
-    {
-      name: "Meta Mask",
-      image: metamaskWalletImage,
-    },
-    {
-      name: "CoinBase ",
-      image: coinbaseWalletImage,
-    },
-    {
-      name: "Trust Wallet",
-      image: trustWalletImage,
-    },
-    {
-      name: "Exodus Wallet",
-      image: exodusWalletImage,
-    },
-  ];
-
+  
   const setStates = (accounts) => {
     setWalletConnection(true);
-    localStorage.setItem("metamaskConnection","true")
+    localStorage.setItem("metamaskConnection", "true")
     setConfigurations((prevdata) => {
       return {
         ...prevdata,

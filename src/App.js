@@ -3,7 +3,7 @@ import "./App.css";
 import AppRoutes from "./AppRoutes";
 import NavBar from "./components/NavBar";
 import WalletBox from "./components/configuration/WalletBox";
-import {ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const AppContext = createContext();
@@ -23,18 +23,18 @@ function App() {
     const setState = async () => {
       if (window.ethereum) {
         window.ethereum.on("accountsChanged", (accounts) => {
-          setConfigurations((prevdata) => {return { ...prevdata, address: accounts[0] }})
+          setConfigurations((prevdata) => { return { ...prevdata, address: accounts[0] } })
         });
         window.ethereum.on("chainChanged", (chainId) => {
-          setConfigurations((prevdata) => {return { ...prevdata, networkId: chainId }})
+          setConfigurations((prevdata) => { return { ...prevdata, networkId: chainId } })
         });
       }
-      
+
       if (localStorage.getItem("metamaskConnection") === "true") {
         setWalletConnection(true);
         let account = await window.ethereum.request({ method: "eth_requestAccounts" });
-        let temp = window.ethereum;
-        setConfigurations((prevVal) => { return { ...prevVal, address: `${account[0]}`, networkId: temp.chainId }});
+        let provider = window.ethereum;
+        setConfigurations((prevVal) => { return { ...prevVal, address: `${account[0]}`, networkId: provider.chainId } });
       }
     }
     setState()

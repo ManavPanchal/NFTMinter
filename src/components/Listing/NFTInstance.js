@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AppContext } from "../../App";
@@ -37,7 +37,6 @@ function NFTInstance() {
         theme: "dark",
       });
       setAlert(true);
-      console.log("minted successfully");
     } catch (error) {
       if (error.message.includes("user rejected transaction")) {
         console.log(true);

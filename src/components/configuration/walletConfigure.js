@@ -1,3 +1,10 @@
+import {
+    coinbaseWalletImage,
+    metamaskWalletImage,
+    exodusWalletImage,
+    trustWalletImage,
+  } from "../../Data/images/images";
+
 export const Blockchain = [
     {
         name:"Ethereum",
@@ -43,3 +50,22 @@ export const Blockchain = [
         ]
     }
 ]
+
+export const wallets = [
+    {
+      name: "Meta Mask",
+      image: metamaskWalletImage,
+    },
+    {
+      name: "CoinBase ",
+      image: coinbaseWalletImage,
+    },
+    {
+      name: "Trust Wallet",
+      image: trustWalletImage,
+    },
+    {
+      name: "Exodus Wallet",
+      image: exodusWalletImage,
+    },
+  ];
