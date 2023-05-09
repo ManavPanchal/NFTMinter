@@ -15,35 +15,6 @@ function NFTInstance() {
     document.getElementsByClassName("address_input")[0].value = currentConfiguration.address;
   }, [currentConfiguration])
 
-  const requestToChangeChain = async () => {
-    if (window.ethereum) {
-      try {
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: "0x13881" }]
-        });
-      } catch (error) {
-        if (error.code === 4902) {
-          try {
-            await window.ethereum.request({
-              method: 'wallet_addEthereumChain',
-              params: [
-                {
-                  chainId: "0x13881",
-                  rpcUrl: 'https://polygon-mumbai.infura.io/v3/4458cf4d1689497b9a38b1d6bbf05e78',
-                },
-              ],
-            });
-          } catch (addError) {
-            console.error(addError);
-          }
-        }
-        console.error(error);
-      }
-    } else {
-      alert('MetaMask is not installed. Please consider installing it: https://metamask.io/download.html');
-    }
-  }
 
   const middleware = async () => {
     try {
@@ -54,7 +25,6 @@ function NFTInstance() {
       if (document.getElementsByClassName("address_input")[0].value === "") {
         window.alert("please add receiver address"); return;
       }
-      await requestToChangeChain()
       await MintNft(document.getElementsByClassName("address_input")[0].value, Nft.ipfs, walletConnection, setOpenWalletBox);
       toast.success("successFully Minted", {
         position: "top-right",

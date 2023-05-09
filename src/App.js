@@ -24,7 +24,6 @@ function App() {
       if (window.ethereum) {
         window.ethereum.on("accountsChanged", (accounts) => {
           setConfigurations((prevdata) => {return { ...prevdata, address: accounts[0] }})
-          
         });
         window.ethereum.on("chainChanged", (chainId) => {
           setConfigurations((prevdata) => {return { ...prevdata, networkId: chainId }})
