@@ -10,7 +10,6 @@ function NFTInstance() {
   const { id } = useParams();
   const Nft = NFTData[id];
   const { setOpenWalletBox, walletConnection, currentConfiguration } = useContext(AppContext);
-  const {setAlert} = useContext(AppContext)
   useEffect(() => {
     document.getElementsByClassName("address_input")[0].value = currentConfiguration.address;
   }, [currentConfiguration])
@@ -26,7 +25,7 @@ function NFTInstance() {
         window.alert("please add receiver address"); return;
       }
       await MintNft(document.getElementsByClassName("address_input")[0].value, Nft.ipfs, walletConnection, setOpenWalletBox);
-      toast.success("successFully Minted", {
+      toast.success("successfully Minted", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -36,10 +35,8 @@ function NFTInstance() {
         progress: undefined,
         theme: "dark",
       });
-      setAlert(true);
     } catch (error) {
       if (error.message.includes("user rejected transaction")) {
-        console.log(true);
         toast.error("User rejected transaction!", {
           position: "top-right",
           autoClose: 2000,
@@ -50,7 +47,6 @@ function NFTInstance() {
           progress: undefined,
           theme: "dark",
         });
-        setAlert(true);
       };
     }
   }

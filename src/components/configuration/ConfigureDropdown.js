@@ -67,7 +67,7 @@ function ConfigureDropdown() {
 
     const renderNetworkBox = () => {
 
-        let tempBlockchainNetworks = Blockchain.filter(ele => ele.name === currentBlockchain)[0].networks
+        let tempBlockchainNetworks = Blockchain.filter(ele => ele.name === currentBlockchain)[0].networks;
         return (
             <>
                 <select

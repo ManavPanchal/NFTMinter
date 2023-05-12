@@ -13,9 +13,6 @@ function MsgHandler() {
     progress: undefined,
     theme: "dark",
   });
-  return (
-    <ToastContainer/>
-  );
 }
 
 export default MsgHandler;

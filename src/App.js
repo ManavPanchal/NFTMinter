@@ -1,10 +1,10 @@
 import { createContext, useEffect, useState } from "react";
-import "./App.css";
 import AppRoutes from "./AppRoutes";
 import NavBar from "./components/NavBar";
 import WalletBox from "./components/configuration/WalletBox";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./App.css";
 
 export const AppContext = createContext();
 
@@ -16,13 +16,18 @@ function App() {
     chain: "",
     networkId: ""
   });
-  const [alert, setAlert] = useState();
 
 
   useEffect(() => {
     const setState = async () => {
       if (window.ethereum) {
         window.ethereum.on("accountsChanged", (accounts) => {
+          if(accounts === []) {
+            localStorage.setItem("metamaskConnection","false");
+            setWalletConnection(false);
+            setConfigurations({ address: "",chain: "",networkId: ""});
+            return;
+          }
           setConfigurations((prevdata) => { return { ...prevdata, address: accounts[0] } })
         });
         window.ethereum.on("chainChanged", (chainId) => {
@@ -42,9 +47,9 @@ function App() {
 
   return (
     <div id="minting_box">
-      {alert && <ToastContainer />}
+      <ToastContainer />
       <AppContext.Provider
-        value={{ setOpenWalletBox, walletConnection, setWalletConnection, currentConfiguration, setConfigurations, setAlert }}
+        value={{ setOpenWalletBox, walletConnection, setWalletConnection, currentConfiguration, setConfigurations }}
       >
         <div className="main">
           <NavBar />

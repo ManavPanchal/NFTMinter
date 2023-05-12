@@ -13,27 +13,25 @@ function CreatNftConstant() {
   const [tokenAddress, setTokenAddress] = useState(0x0);
   const [tokenMetadata, setTokenMetadata] = useState({});
   const [tokenImage, setTokenImage] = useState();
-  const {setOpenWalletBox, walletConnection} = useContext(AppContext)
+  const {setOpenWalletBox, walletConnection} = useContext(AppContext);
 
   const fileInputRef = useRef();
 
-  if(!walletConnection) setOpenWalletBox(true);
-
   return (
     <div className="main flex justify-center items-center h-full">
-      <div className="header text-7xl font-bold text-center py-8 mx-20 border-b border-b-black ">
-        Mint NFT
+      <div className="header text-7xl max-w-md font-bold text-center py-8 mx-20 border-b border-b-black ">
+       Create Your Own NFT
       </div>
-      <div className="mint_box mx-16 p-10 flex flex-col gap-9">
-        <div className="configuration_box flex items-center justify-between">
+      <div className="mint_box mx-16 py-10 flex flex-col gap-9">
+        {walletConnection && <div className="configuration_box flex items-center justify-between">
           <ConfigureDropdown/>
-        </div>
+        </div>}
         <div className="minting_note">
           * Please fill the Input fields and choose image carefully as it is
           immutable after succesfully minted and the field with
           <span className=" text-red-500 text-lg"> * </span> is mendatory feilds
         </div>
-        <div className="flex flex-col gap-3 token_address">
+        <div className="flex flex-col gap-3 w-full token_address">
           <label htmlFor="tokenAddress_input" className="flex gap-1 text-xl">
             Token Address
             <span>*</span>
@@ -44,7 +42,7 @@ function CreatNftConstant() {
             </sub>
           </label>
           <input
-            className="rounded px-3"
+            className="rounded px-3 w-full"
             type="text"
             name="tokenAddress"
             onChange={(event) => setTokenAddress(event.target.value)}
@@ -61,7 +59,7 @@ function CreatNftConstant() {
             </sub>
           </label>
           <input
-            className="rounded px-3"
+            className="rounded px-3 w-full"
             type="text"
             name="tokenName_input"
             onChange={(event) => setTokenMetadata((prevVal)=>{
@@ -75,7 +73,6 @@ function CreatNftConstant() {
         <div className="flex flex-col gap-3 token_id">
           <label htmlFor="tokeId_input" className="flex gap-1 text-xl">
             Token Id
-            <span>*</span>
             <sub>
               <Tooltip title="Add" placement="right-end">
                 {infoIcon()}
@@ -83,7 +80,7 @@ function CreatNftConstant() {
             </sub>
           </label>
           <input
-            className="rounded px-3"
+            className="rounded px-3 w-full"
             type="number"
             name="tokenId_input"
             onChange={(event) => setTokenMetadata((prevVal)=>{
@@ -129,7 +126,7 @@ function CreatNftConstant() {
             <span>*</span>
           </label>
           <input
-            className="rounded px-3"
+            className="rounded px-3 w-full"
             type="number"
             name="extraMetadata"
           />

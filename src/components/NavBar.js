@@ -35,7 +35,7 @@ function NavBar() {
                     return address
                   } catch (error) {
                     console.log(true);
-                    localStorage.setItem("metamaskConnection","false")
+                    localStorage.setItem("metamaskConnection","false");
                     setWalletConnection(false)
                     console.log(error);
                   }
